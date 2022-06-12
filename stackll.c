@@ -13,30 +13,39 @@ struct node
 struct node *head=NULL,*pos=NULL,*tail=NULL;
 
 void push(int val)
-{	if(head==NULL)
+{	if(top>=4)
 	{
-		head=(struct node *) malloc(sizeof(struct node));
-		head->data=val;
-		head->next=NULL;
-		pos=head;
-		tail=head;
-		top=0;
+		printf("\nOverflow\n");
 	}
+	
 	else
 	{
-		struct node *temp;
-		temp=(struct node *)malloc(sizeof(struct node ));
-		temp->data=val;
-		temp->next=head;
-		temp=head;
-		top++;
+		if(head==NULL)
+		{
+			head=(struct node *) malloc(sizeof(struct node));
+			head->data=val;
+			head->next=NULL;
+			pos=head;
+			tail=head;
+			top=0;
+		}
+		else
+		{
+			struct node *temp;
+			temp=(struct node *)malloc(sizeof(struct node ));
+			temp->data=val;
+			temp->next=head;
+			head=temp;
+			pos=head;
+			top++;
+		}
 	}
 }
 	
 void pop()
 {	if(head==NULL)
 	{
-		printf("Underflow");
+		printf("\nUnderflow");
 		top=-1;
 	}
 	else
@@ -51,8 +60,9 @@ void pop()
 
 void display()
 {
+	printf("\nThe elements are :\n");
 	pos=head;
-	while(pos->next!=NULL)
+	while(pos!=NULL)
 	{
 		printf("%d\n",pos->data);
 		pos=pos->next;
@@ -61,7 +71,7 @@ void display()
 
 void stacktop()
 {
-	printf("Stacktop at %d",top);
+	printf("\n Stacktop at %d",top);
 }
 
 void main()
@@ -78,7 +88,7 @@ void main()
 		{
 			case 1:
 			{
-				printf("Enter Data :");
+				printf(" ENTER DATA :");
 				scanf("%d",&entry);
 				push(entry);
 				break;
@@ -104,19 +114,14 @@ void main()
 			
 			case 5:
 			{
-				printf("Exiting");
+				printf("Exiting\n");
 				exit(0);
+			}
+			
+			default:
+			{
+				printf(" WRONG OPTION \n");
 			}
 		}
 	}
 }
-				
-				
-			
-				
-				
-				
-				
-				
-				
-				
