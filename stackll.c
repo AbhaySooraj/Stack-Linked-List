@@ -59,13 +59,21 @@ void pop()
 }			
 
 void display()
-{
-	printf("\nThe elements are :\n");
-	pos=head;
-	while(pos!=NULL)
+{	
+	if(head==NULL)
 	{
-		printf("%d\n",pos->data);
-		pos=pos->next;
+		printf("Stack Empty");
+	}
+		
+	else
+	{
+		printf("\nThe elements are :\n");
+		pos=head;
+		while(pos!=NULL)
+		{
+			printf("%d\n",pos->data);
+			pos=pos->next;
+		}
 	}
 }	
 
@@ -124,4 +132,12 @@ void main()
 			}
 		}
 	}
-}
+}		
+			
+				
+				
+				
+				
+				
+				
+				
